@@ -82,8 +82,8 @@ public class Filters extends Paging {
             return buildPaging(query, first, page, skip, sort, firstPage, previousPage, nextPage, lastPage, null).stream().toList();
         }
         if (filters != null) {
-            PanacheQuery<Action> filteredactions = this.buildFilters(entityId, entityValue);
-            return buildPaging(null, first, page, skip, sort, firstPage, previousPage, nextPage, lastPage, filteredactions);
+            PanacheQuery<Action> filteredActions = this.buildFilters(entityId, entityValue);
+            return buildPaging(null, first, page, skip, sort, firstPage, previousPage, nextPage, lastPage, filteredActions);
         }
         return null;
     }
