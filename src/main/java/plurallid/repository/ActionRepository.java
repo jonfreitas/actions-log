@@ -1,4 +1,4 @@
-package plurallid.repository.actions;
+package plurallid.repository;
 
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
