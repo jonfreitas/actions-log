@@ -1,4 +1,4 @@
-package plurallid.auth.config;
+package plurallid.auth.exceptions;
 
 import graphql.ErrorClassification;
 import graphql.ErrorType;
@@ -11,13 +11,12 @@ import java.util.List;
 import java.util.Map;
 
 
+public class UnparseableTokenError extends RuntimeException implements GraphQLError {
 
-public class AuthenticationTokenRequiredError extends RuntimeException implements GraphQLError {
+    private String UNPARSEABLE_TOKEN = "unparseable_token";
 
-    private String AUTHENTICATION_TOKEN_REQUIRED = "authentication_token_required";
-
-    public AuthenticationTokenRequiredError() {
-        super("Authentication token required. Put it and try again.");
+    public UnparseableTokenError() {
+        super("Unparseable token");
     }
 
     @Override
@@ -33,7 +32,7 @@ public class AuthenticationTokenRequiredError extends RuntimeException implement
     @Override
     public Map<String, Object> getExtensions() {
         Map<String, Object> extensions = new HashMap<>();
-        extensions.put("code", AUTHENTICATION_TOKEN_REQUIRED);
+        extensions.put("code", UNPARSEABLE_TOKEN);
         return extensions;
     }
     

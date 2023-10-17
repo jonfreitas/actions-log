@@ -1,4 +1,4 @@
-package plurallid.auth.config;
+package plurallid.auth.exceptions;
 
 import graphql.ErrorClassification;
 import graphql.ErrorType;

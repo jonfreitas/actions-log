@@ -1,29 +1,28 @@
-package plurallid.auth.config;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+package plurallid.auth.exceptions;
 
 import graphql.ErrorClassification;
 import graphql.ErrorType;
 import graphql.GraphQLError;
 import graphql.language.SourceLocation;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-public class BadGatewayError extends RuntimeException implements GraphQLError {
+public class NotAcceptableError extends RuntimeException implements GraphQLError {
 
-    private String BAD_GATEWAY = "bad_gateway";
+    private String NOT_ACCEPTABLE = "not_acceptable";
 
-    public BadGatewayError() {
-        super("Bad Gateway");
+    public NotAcceptableError() {
+        super("Not Acceptable");
     }
 
     @Override
     public List<SourceLocation> getLocations() {
         return new ArrayList<>();
     }
-    
+
     @Override
     public ErrorClassification getErrorType() {
         return ErrorType.ValidationError;
@@ -32,7 +31,7 @@ public class BadGatewayError extends RuntimeException implements GraphQLError {
     @Override
     public Map<String, Object> getExtensions() {
         Map<String, Object> extensions = new HashMap<>();
-        extensions.put("code", BAD_GATEWAY);
+        extensions.put("code", NOT_ACCEPTABLE);
         return extensions;
     }
 

@@ -1,4 +1,4 @@
-package plurallid.auth.config;
+package plurallid.auth.exceptions;
 
 import graphql.ErrorClassification;
 import graphql.ErrorType;
@@ -12,12 +12,12 @@ import java.util.Map;
 
 
 
-public class ExpiredTokenError extends RuntimeException implements GraphQLError {
+public class AuthenticationTokenRequiredError extends RuntimeException implements GraphQLError {
 
-    private String EXPIRED_TOKEN = "expired_token";
+    private String AUTHENTICATION_TOKEN_REQUIRED = "authentication_token_required";
 
-    public ExpiredTokenError() {
-        super("Application token is expired. Check it and try again.");
+    public AuthenticationTokenRequiredError() {
+        super("Authentication token required. Put it and try again.");
     }
 
     @Override
@@ -33,7 +33,7 @@ public class ExpiredTokenError extends RuntimeException implements GraphQLError 
     @Override
     public Map<String, Object> getExtensions() {
         Map<String, Object> extensions = new HashMap<>();
-        extensions.put("code", EXPIRED_TOKEN);
+        extensions.put("code", AUTHENTICATION_TOKEN_REQUIRED);
         return extensions;
     }
     
