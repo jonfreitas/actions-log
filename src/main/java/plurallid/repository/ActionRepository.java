@@ -9,6 +9,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import org.bson.Document;
 import org.eclipse.microprofile.graphql.Source;
+import plurallid.auth.exceptions.RequiredFieldError;
 import plurallid.codecs.ChangesCodec;
 import plurallid.entity.actions.*;
 import plurallid.helpers.Filters;
@@ -94,6 +95,7 @@ public class ActionRepository extends Filters implements PanacheMongoRepository<
     }
 
     public void addAction(Action action) {
+        this.validateChangesFields(action);
         if (this.entityIdExists(action.getEntityId()) != null && this.entityValueExists(action.getEntityValue()) != null) {
             ChangesCodec changesCodec = new ChangesCodec();
             changesCodec.addNewChanges(action, getCollection());
@@ -102,12 +104,27 @@ public class ActionRepository extends Filters implements PanacheMongoRepository<
         action.persist();
     }
 
-    public Action entityIdExists(Integer entityId){
+    private Action entityIdExists(Integer entityId){
         return find("entityId", entityId).firstResult();
     }
 
-    public Action entityValueExists(Integer entityValue){
+    private Action entityValueExists(Integer entityValue){
         return find("entityValue", entityValue).firstResult();
+    }
+
+    private void validateChangesFields(Action action) {
+        if (action.getChanges().get(0).getWho() == null) {
+            throw new RequiredFieldError("who");
+        }
+        if (action.getChanges().get(0).getMessage() == null) {
+            throw new RequiredFieldError("message");
+        }
+        if (action.getChanges().get(0).getWhen() == null) {
+            throw new RequiredFieldError("when");
+        }
+        if (action.getChanges().get(0).getApplicationId() == null) {
+            throw new RequiredFieldError("applicationId");
+        }
     }
 
 }
