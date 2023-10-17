@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 
 import io.quarkus.vertx.http.runtime.CurrentVertxRequest;
 import io.vertx.core.json.JsonObject;
-import plurallid.auth.config.NotAcceptableError;
+import plurallid.auth.exceptions.NotAcceptableError;
 import plurallid.auth.helper.JwtActionUtil;
 
 @Configuration

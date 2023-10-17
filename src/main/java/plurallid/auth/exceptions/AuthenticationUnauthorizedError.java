@@ -1,28 +1,29 @@
-package plurallid.auth.config;
-
-import graphql.ErrorClassification;
-import graphql.ErrorType;
-import graphql.GraphQLError;
-import graphql.language.SourceLocation;
+package plurallid.auth.exceptions;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class NotAcceptableError extends RuntimeException implements GraphQLError {
+import graphql.ErrorClassification;
+import graphql.ErrorType;
+import graphql.GraphQLError;
+import graphql.language.SourceLocation;
 
-    private String NOT_ACCEPTABLE = "not_acceptable";
 
-    public NotAcceptableError() {
-        super("Not Acceptable");
+public class AuthenticationUnauthorizedError extends RuntimeException implements GraphQLError {
+
+    private String ATHENTICATION_UNAUTHORIZED = "authentication_unauthorized";
+
+    public AuthenticationUnauthorizedError() {
+        super("Authentication unauthorized");
     }
 
     @Override
     public List<SourceLocation> getLocations() {
         return new ArrayList<>();
     }
-
+    
     @Override
     public ErrorClassification getErrorType() {
         return ErrorType.ValidationError;
@@ -31,7 +32,7 @@ public class NotAcceptableError extends RuntimeException implements GraphQLError
     @Override
     public Map<String, Object> getExtensions() {
         Map<String, Object> extensions = new HashMap<>();
-        extensions.put("code", NOT_ACCEPTABLE);
+        extensions.put("code", ATHENTICATION_UNAUTHORIZED);
         return extensions;
     }
 

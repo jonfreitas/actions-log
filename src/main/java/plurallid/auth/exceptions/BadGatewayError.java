@@ -1,4 +1,4 @@
-package plurallid.auth.config;
+package plurallid.auth.exceptions;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,12 +11,12 @@ import graphql.GraphQLError;
 import graphql.language.SourceLocation;
 
 
-public class AuthenticationUnauthorizedError extends RuntimeException implements GraphQLError {
+public class BadGatewayError extends RuntimeException implements GraphQLError {
 
-    private String ATHENTICATION_UNAUTHORIZED = "authentication_unauthorized";
+    private String BAD_GATEWAY = "bad_gateway";
 
-    public AuthenticationUnauthorizedError() {
-        super("Authentication unauthorized");
+    public BadGatewayError() {
+        super("Bad Gateway");
     }
 
     @Override
@@ -32,7 +32,7 @@ public class AuthenticationUnauthorizedError extends RuntimeException implements
     @Override
     public Map<String, Object> getExtensions() {
         Map<String, Object> extensions = new HashMap<>();
-        extensions.put("code", ATHENTICATION_UNAUTHORIZED);
+        extensions.put("code", BAD_GATEWAY);
         return extensions;
     }
 

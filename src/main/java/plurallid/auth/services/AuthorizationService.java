@@ -12,8 +12,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
-import org.junit.jupiter.api.BeforeAll;
-import plurallid.auth.config.*;
+import plurallid.auth.exceptions.*;
 import plurallid.enums.App;
 
 public interface AuthorizationService extends App {
