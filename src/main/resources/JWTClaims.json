@@ -1,0 +1,10 @@
+{
+    "iss": "plurallid",
+    "jti": "a-123",
+    "sub": "jdoe-using-jwt-rbac",
+    "upn": "jdoe@quarkus.io",
+    "preferred_username": "jdoe",
+    "aud": "using-jwt-rbac",
+    "typ": "JWT",
+    "auth_time": null
+}
